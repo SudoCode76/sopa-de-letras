@@ -13,9 +13,8 @@ const config = {
 
 const words = ['REQUISITOS', 'ANALISIS', 'DISEÑO', 'IMPLEMENTACION', 'PRUEBAS', 'DESPLIEGUE', 'MANTENIMIENTO'];
 
-
-
-let currentWord = words[0];
+// Seleccionar una palabra aleatoria al inicio
+let currentWord = words[Math.floor(Math.random() * words.length)];
 let foundWords = 0;
 
 // Referencias
@@ -39,6 +38,10 @@ function init() {
     ctx = canvas.getContext('2d');
 
     console.log('Canvas configurado:', canvas.width, 'x', canvas.height);
+
+    // Mostrar la palabra actual en el HTML
+    document.getElementById('target-word').textContent = currentWord;
+    console.log('Palabra objetivo:', currentWord);
 
     // Crear motor de física
     engine = Engine.create({
