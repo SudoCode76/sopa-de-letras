@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Simple</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #667eea;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        canvas {
+            border: 3px solid white;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="testCanvas" width="800" height="600"></canvas>
+
+    <script>
+        console.log('Test iniciado');
+
+        const canvas = document.getElementById('testCanvas');
+        const ctx = canvas.getContext('2d');
+
+        console.log('Canvas:', canvas.width, 'x', canvas.height);
+
+        function drawTest() {
+            // Fondo
+            ctx.fillStyle = '#f8f9fa';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Plato
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+            const radius = 280;
+
+            // Borde
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, radius + 15, 0, Math.PI * 2);
+            ctx.fillStyle = '#654321';
+            ctx.fill();
+
+            // Interior
+            const gradient = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, radius);
+            gradient.addColorStop(0, '#FFE4B5');
+            gradient.addColorStop(0.5, '#F4D6A0');
+            gradient.addColorStop(1, '#DEB887');
+
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
+            ctx.fillStyle = gradient;
+            ctx.fill();
+
+            // Texto de prueba
+            ctx.fillStyle = '#333';
+            ctx.font = 'bold 40px Arial';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('¡FUNCIONA!', centerX, centerY);
+
+            console.log('Dibujado');
+        }
+
+        drawTest();
+    </script>
+</body>
+</html>
+
