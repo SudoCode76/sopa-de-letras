@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test - Palabra Aleatoria</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            background: #667eea;
+            color: white;
+        }
+        .test-box {
+            background: rgba(255,255,255,0.2);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 10px 0;
+        }
+        #word {
+            font-size: 3em;
+            font-weight: bold;
+            color: #FFD700;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧪 Test de Palabra Aleatoria</h1>
+
+    <div class="test-box">
+        <h2>Array de palabras:</h2>
+        <p id="words-array"></p>
+    </div>
+
+    <div class="test-box">
+        <h2>Palabra seleccionada:</h2>
+        <p id="word"></p>
+    </div>
+
+    <button onclick="location.reload()" style="padding: 15px 30px; font-size: 1.2em; cursor: pointer; border-radius: 5px; border: none; background: #FFD700; font-weight: bold;">
+        🔄 Recargar (nueva palabra)
+    </button>
+
+    <script>
+        const words = ['REQUISITOS', 'ANALISIS', 'DISEÑO', 'IMPLEMENTACION', 'PRUEBAS', 'DESPLIEGUE', 'MANTENIMIENTO'];
+
+        // Mostrar el array
+        document.getElementById('words-array').textContent = words.join(', ');
+
+        // Seleccionar palabra aleatoria
+        const currentWord = words[Math.floor(Math.random() * words.length)];
+
+        // Mostrar la palabra seleccionada
+        document.getElementById('word').textContent = currentWord;
+
+        console.log('Array completo:', words);
+        console.log('Palabra seleccionada:', currentWord);
+        console.log('Índice:', words.indexOf(currentWord));
+    </script>
+</body>
+</html>
+
